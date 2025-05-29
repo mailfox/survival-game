@@ -1,103 +1,41 @@
-ERROR
-Module build failed (from ./node_modules/babel-loader/lib/index.js):
-SyntaxError: /home/mailfox/survival-game/web-frontend/src/App.js: Identifier 'App' has already been declared. (29:9)
+Опять ошибку допустил
 
-  27 | import axios from 'axios';
-  28 |
-> 29 | function App() {
-     |          ^
-  30 |   useEffect(() => {
-  31 |     axios.get('http://localhost:8000/')
-  32 |       .then(response => console.log('Ответ от бэкенда:', response.data))
-    at constructor (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:357:19)
-    at FlowParserMixin.raise (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:6600:19)
-    at FlowScopeHandler.checkRedeclarationInScope (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:1617:19)
-    at FlowScopeHandler.declareName (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:1583:12)
-    at FlowScopeHandler.declareName (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:1684:11)
-    at FlowParserMixin.registerFunctionStatementId (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:13335:16)
-    at FlowParserMixin.parseFunction (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:13319:12)
-    at FlowParserMixin.parseFunctionStatement (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12998:17)
-    at FlowParserMixin.parseStatementContent (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12665:21)
-    at FlowParserMixin.parseStatementLike (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12641:17)
-    at FlowParserMixin.parseStatementLike (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:2919:24)
-    at FlowParserMixin.parseModuleItem (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12618:17)
-    at FlowParserMixin.parseBlockOrModuleBlockBody (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:13189:36)
-    at FlowParserMixin.parseBlockBody (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:13182:10)
-    at FlowParserMixin.parseProgram (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12511:10)
-    at FlowParserMixin.parseTopLevel (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12501:25)
-    at FlowParserMixin.parseTopLevel (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:3688:28)
-    at FlowParserMixin.parse (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:14362:10)
-    at parse (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:14396:38)
-    at parser (/home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
-    at parser.next (<anonymous>)
-    at normalizeFile (/home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
-    at normalizeFile.next (<anonymous>)
-    at run (/home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
-    at run.next (<anonymous>)
-    at transform (/home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/transform.js:22:33)
-    at transform.next (<anonymous>)
-    at step (/home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:261:32)
-    at /home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:273:13
-    at async.call.result.err.err (/home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:223:11)
-./src/App.js@http://localhost:3000/static/js/bundle.js:21773:7
-options.factory@http://localhost:3000/static/js/bundle.js:22652:30
-__webpack_require__@http://localhost:3000/static/js/bundle.js:22049:32
-fn@http://localhost:3000/static/js/bundle.js:22280:21
-hotRequire@http://localhost:3000/static/js/bundle.js:22635:61
-./src/index.js@http://localhost:3000/static/js/bundle.js:21896:81
-options.factory@http://localhost:3000/static/js/bundle.js:22652:30
-__webpack_require__@http://localhost:3000/static/js/bundle.js:22049:32
-@http://localhost:3000/static/js/bundle.js:23245:56
-@http://localhost:3000/static/js/bundle.js:23247:12
-ERROR in ./src/App.js
-Module build failed (from ./node_modules/babel-loader/lib/index.js):
-SyntaxError: /home/mailfox/survival-game/web-frontend/src/App.js: Identifier 'App' has already been declared. (15:9)
-
-  13 | import Inventory from './components/Inventory';
-  14 |
-> 15 | function App() {
-     |          ^
-  16 |   return (
-  17 |     <div className="App">
-  18 |       <Player id={1} />
-    at constructor (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:357:19)
-    at FlowParserMixin.raise (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:6600:19)
-    at FlowScopeHandler.checkRedeclarationInScope (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:1617:19)
-    at FlowScopeHandler.declareName (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:1583:12)
-    at FlowScopeHandler.declareName (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:1684:11)
-    at FlowParserMixin.registerFunctionStatementId (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:13335:16)
-    at FlowParserMixin.parseFunction (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:13319:12)
-    at FlowParserMixin.parseFunctionStatement (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12998:17)
-    at FlowParserMixin.parseStatementContent (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12665:21)
-    at FlowParserMixin.parseStatementLike (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12641:17)
-    at FlowParserMixin.parseStatementLike (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:2919:24)
-    at FlowParserMixin.parseModuleItem (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12618:17)
-    at FlowParserMixin.parseBlockOrModuleBlockBody (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:13189:36)
-    at FlowParserMixin.parseBlockBody (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:13182:10)
-    at FlowParserMixin.parseProgram (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12511:10)
-    at FlowParserMixin.parseTopLevel (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:12501:25)
-    at FlowParserMixin.parseTopLevel (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:3688:28)
-    at FlowParserMixin.parse (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:14362:10)
-    at parse (/home/mailfox/survival-game/web-frontend/node_modules/@babel/parser/lib/index.js:14396:38)
-    at parser (/home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
-    at parser.next (<anonymous>)
-    at normalizeFile (/home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
-    at normalizeFile.next (<anonymous>)
-    at run (/home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
-    at run.next (<anonymous>)
-    at transform (/home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/transform.js:22:33)
-    at transform.next (<anonymous>)
-    at step (/home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:261:32)
-    at /home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:273:13
-    at async.call.result.err.err (/home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:223:11)
-    at /home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:189:28
-    at /home/mailfox/survival-game/web-frontend/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
-    at /home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:113:33
-    at step (/home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:287:14)
-    at /home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:273:13
-    at async.call.result.err.err (/home/mailfox/survival-game/web-frontend/node_modules/gensync/index.js:223:11)
-ERROR
-[eslint] 
-src/App.js
-  Line 15:9:  Parsing error: Identifier 'App' has already been declared. (15:9)
-
+survival-game/backend$ uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['/home/mailfox/survival-game/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1450765] using StatReload
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/mailfox/survival-game/venv/lib/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/mailfox/survival-game/venv/lib/python3.9/site-packages/uvicorn/server.py", line 66, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/usr/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/home/mailfox/survival-game/venv/lib/python3.9/site-packages/uvicorn/server.py", line 70, in serve
+    await self._serve(sockets)
+  File "/home/mailfox/survival-game/venv/lib/python3.9/site-packages/uvicorn/server.py", line 77, in _serve
+    config.load()
+  File "/home/mailfox/survival-game/venv/lib/python3.9/site-packages/uvicorn/config.py", line 435, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/mailfox/survival-game/venv/lib/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 855, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/mailfox/survival-game/backend/app/main.py", line 2, in <module>
+    from app.api.endpoints import player
+  File "/home/mailfox/survival-game/backend/app/api/endpoints/player.py", line 5, in <module>
+    from schemas.player import PlayerBase, PlayerUpdate
+ImportError: cannot import name 'PlayerUpdate' from 'schemas.player' (/home/mailfox/survival-game/backend/schemas/player.py)
