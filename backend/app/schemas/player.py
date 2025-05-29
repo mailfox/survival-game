@@ -1,11 +1,22 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime
 
 class PlayerBase(BaseModel):
-    health: int = Field(100, ge=0, le=100)
-    hunger: int = Field(100, ge=0, le=100)
-    thirst: int = Field(100, ge=0, le=100)
-    radiation: int = Field(0, ge=0, le=100)
+    id: int
+    health: int = 100
+    hunger: int = 100
+    thirst: int = 100
+    stamina: int = 100
+    radiation: int = 0
+    last_update: datetime
+
+class PlayerCreate(PlayerBase):
+    pass
 
 class PlayerUpdate(BaseModel):
-    action: str  # "eat", "drink", "heal"
-    value: int = Field(10, gt=0)
+    health: Optional[int] = None
+    hunger: Optional[int] = None
+    thirst: Optional[int] = None
+    stamina: Optional[int] = None
+    radiation: Optional[int] = None

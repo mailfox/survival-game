@@ -10,8 +10,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from alembic import context
 
 # Импорт моделей должен быть ДО target_metadata
-from db.base_class import Base
-from models.player import Player  # Вот этот критически важный импорт
+from core.base_class import Base
+from core.models.player import Player  # Вот этот критически важный импорт
 
 target_metadata = Base.metadata
 

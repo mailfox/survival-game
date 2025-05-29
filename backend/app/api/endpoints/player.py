@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from db.session import get_db
-from models.player import Player
-from schemas.player import PlayerBase, PlayerUpdate
+from backend.core.database import get_db
+from backend.core.models import Player
+from backend.app.schemas.player import PlayerBase, PlayerUpdate
 
 router = APIRouter()
 
@@ -13,19 +13,20 @@ def read_player(player_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Player not found")
     return player
 
-@router.patch("/{player_id}", response_model=PlayerBase)
-def update_player_endpoint(
+@router.put("/{player_id}", response_model=PlayerBase)
+def update_player(
     player_id: int,
-    player_data: PlayerUpdate,
+    player_update: PlayerUpdate,
     db: Session = Depends(get_db)
 ):
-    player = db.query(Player).filter(Player.id == player_id).first()
-    if not player:
+    db_player = db.query(Player).filter(Player.id == player_id).first()
+    if not db_player:
         raise HTTPException(status_code=404, detail="Player not found")
     
-    for field, value in player_data.dict(exclude_unset=True).items():
-        setattr(player, field, value)
+    update_data = player_update.dict(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(db_player, key, value)
     
     db.commit()
-    db.refresh(player)
-    return player
+    db.refresh(db_player)
+    return db_player

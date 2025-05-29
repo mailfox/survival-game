@@ -1,5 +1,5 @@
-from db.session import SessionLocal
-from models.player import Player
+from core.session import SessionLocal
+from core.models.player import Player
 
 db = SessionLocal()
 

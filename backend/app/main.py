@@ -1,14 +1,12 @@
 from fastapi import FastAPI
-from app.api.endpoints import player
+from backend.app.api.endpoints import player, survival
+from backend.core.database import Base, engine
 
-app = FastAPI(
-    title="Survival Game API",
-    description="API для игры на выживание",
-    version="0.1.0"
-)
+app = FastAPI()
 
-app.include_router(
-    player.router,
-    prefix="/api/players",
-    tags=["players"]
-)
+app.include_router(player.router)
+app.include_router(survival.router, prefix="/survival")
+
+@app.on_event("startup")
+async def startup():
+    Base.metadata.create_all(bind=engine)
