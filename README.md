@@ -1,4 +1,5 @@
 Игра на выживание
+
 **Backend:** 
 - Python 3.9.5
 - FastAPI + PostgreSQL + Redis (для кэша)  
