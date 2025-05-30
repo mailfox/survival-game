@@ -1,48 +1,84 @@
+// /home/mailfox/survival-game/frontend/src/PlayerStatus.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { gsap } from 'gsap';
+
+// Базовый URL для бэкенда
+const API_URL = 'http://127.0.0.1:8000';
 
 const PlayerStatus = ({ playerId }) => {
-  const [status, setStatus] = useState({ health: 0, hunger: 0, thirst: 0, radiation: 0 });
+  const [player, setPlayer] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchStatus = async () => {
+    const fetchPlayer = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/players/${playerId}`);
-        setStatus(response.data);
+        setLoading(true);
+        const response = await axios.get(`${API_URL}/player/${playerId}`);
+        console.log('Player response:', response.data); // Отладка
+        setPlayer(response.data);
       } catch (error) {
-        console.error('Error fetching player status:', error);
+        console.error('Error fetching player:', error.response || error.message); // Отладка
+        setError('Failed to load player data');
+      } finally {
+        setLoading(false);
       }
     };
-    fetchStatus();
+
+    if (playerId) {
+      fetchPlayer();
+    }
   }, [playerId]);
 
-  const handleEat = async () => {
+  const handleRadiate = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/player/eat', { player_id: playerId, amount: 20 });
-      setStatus((prev) => ({ ...prev, hunger: response.data.hunger }));
+      const response = await axios.post(`${API_URL}/player/${playerId}/radiate`, { amount: 10 });
+      console.log('Radiate response:', response.data); // Отладка
+      setPlayer(response.data);
+      setError(null);
+
+      gsap.to('.radiation-level', {
+        duration: 1,
+        backgroundColor: '#ff0000',
+        ease: 'power2.out',
+        onComplete: () => {
+          gsap.to('.radiation-level', { backgroundColor: '#ffffff', duration: 0.5 });
+        },
+      });
+
+      if (response.data.health === 0) {
+        gsap.to('.player-status', {
+          opacity: 0,
+          duration: 1,
+          onComplete: () => alert('Player died from radiation!'),
+        });
+      }
     } catch (error) {
-      console.error('Error eating:', error);
+      const errorMessage = error.response?.data?.detail || 'Error applying radiation';
+      console.error('Error applying radiation:', error.response || error.message); // Отладка
+      setError(errorMessage);
     }
   };
 
-  const handleDrink = async () => {
-    try {
-      const response = await axios.post('http://localhost:8000/player/drink', { player_id: playerId, amount: 30 });
-      setStatus((prev) => ({ ...prev, thirst: response.data.thirst }));
-    } catch (error) {
-      console.error('Error drinking:', error);
-    }
-  };
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div className="text-red-500">Error: {error}</div>;
 
   return (
-    <div>
-      <h2>Player Status</h2>
-      <p>Health: {status.health}%</p>
-      <p>Hunger: {status.hunger}%</p>
-      <p>Thirst: {status.thirst}%</p>
-      <p>Radiation: {status.radiation}%</p>
-      <button onClick={handleEat}>Eat</button>
-      <button onClick={handleDrink}>Drink</button>
+    <div className="player-status p-4 bg-gray-800 text-white rounded-lg">
+      <h2 className="text-xl">Player Status</h2>
+      <p>Health: {player.health}</p>
+      <p>Hunger: {player.hunger}</p>
+      <p>Thirst: {player.thirst}</p>
+      <p className="radiation-level">Radiation: {player.radiation}</p>
+      {error && <p className="text-red-500">{error}</p>}
+      <button
+        onClick={handleRadiate}
+        className="mt-2 px-4 py-2 bg-red-600 hover:bg-red-700 rounded"
+        disabled={player.health === 0}
+      >
+        Radiate
+      </button>
     </div>
   );
 };

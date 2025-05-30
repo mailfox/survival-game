@@ -1,3 +1,4 @@
+# /home/mailfox/survival-game/backend/models/player.py
 from pydantic import BaseModel
 from sqlalchemy import Column, Integer
 from database import Base
@@ -15,3 +16,6 @@ class Player(BaseModel):
     hunger: int = 100
     thirst: int = 100
     radiation: int = 0
+
+    class Config:
+        from_attributes = True  # Добавлено

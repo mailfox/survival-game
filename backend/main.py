@@ -1,5 +1,10 @@
+# /home/mailfox/survival-game/backend/main.py
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
+
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware  # Исправлено с fastapi.middleware
 from database import init_db
 from routes import player, inventory, location
 
